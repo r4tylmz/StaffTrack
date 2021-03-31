@@ -18,6 +18,6 @@ Inside of the StaffTrack.WebUI folder:
 
 2- You need to install the node modules first as this repository doesn't have any node modules in it. So type yarn install this command will install all of the dependencies related to the project for you.
 
-3- Start the server on localhost using `` yarn serve ``
+3- Start the server on localhost using the `` yarn serve `` command.
 
 ```Note that you need to install Node.JS on your operating system before using this.```
