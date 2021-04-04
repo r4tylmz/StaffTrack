@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -24,21 +25,21 @@ namespace StaffTrack.WebAPI.Controllers
         public async Task<IActionResult> GetAll()
         {
             var admins = await _userService.GetAllAsync();
-            return Ok(admins);
+            return Ok(_mapper.Map<IEnumerable<UserDto>>(admins));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var admin = await _userService.GetByIdAsync(id);
-            return Ok(admin);
+            return Ok(_mapper.Map<UserDto>(admin));
         }
         
         [HttpPost]
         public async Task<IActionResult> Save(User user)
         {
             var newAdmin = await _userService.AddAsync(user);
-            return Created(string.Empty, newAdmin);
+            return Created(string.Empty, _mapper.Map<UserDto>(newAdmin));
         }
         
         [HttpPost("login")]
