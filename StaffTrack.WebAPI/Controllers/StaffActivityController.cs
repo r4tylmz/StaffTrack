@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using StaffTrack.Core.Entities;
 using StaffTrack.Core.Services;
 using StaffTrack.WebAPI.DTOs;
+using StaffTrack.WebAPI.Helpers;
 
 namespace StaffTrack.WebAPI.Controllers
 {
@@ -39,7 +40,7 @@ namespace StaffTrack.WebAPI.Controllers
                                       EntryTime = activity.EntryTime,
                                       ExitTime = activity.ExitTime
                                   });
-            return Ok(staffActivities);
+            return Ok(staffActivities.OrderByDescending(x=> x.StaffId));
         }
         
         [HttpGet("{id}")]
@@ -61,16 +62,11 @@ namespace StaffTrack.WebAPI.Controllers
             return Ok(staffActivities);
         }
 
-        [HttpGet("{id}/loyality")]
-        public IActionResult GetLoyalityById(int id)
+        [HttpGet("{id}/loyalty")]
+        public IActionResult GetLoyaltyById(int id)
         {
             var activities = _staffActivityService.GetAllActivitiesById(id);
-            double totalSeconds = 0;
-            foreach (var item in activities)
-            {
-                totalSeconds += item.ExitTime.Subtract(item.EntryTime).TotalSeconds;
-            }
-            return Ok((int)totalSeconds);
+            return Ok(Helper.CalculateTotalMinutes(activities));
         }
 
         [HttpPost]

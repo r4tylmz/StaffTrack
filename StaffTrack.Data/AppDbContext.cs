@@ -11,6 +11,7 @@ namespace StaffTrack.Data
             modelBuilder.ApplyConfiguration(new StaffConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new StaffActivityConfiguration());
+            modelBuilder.ApplyConfiguration(new ConstantConfiguration());
         }
         
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
@@ -21,7 +22,6 @@ namespace StaffTrack.Data
         public DbSet<StaffActivity> StaffActivities;
         public DbSet<User> Users;
         public DbSet<Staff> Staffs;
-
 
     }
 }

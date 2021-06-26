@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using StaffTrack.Core.Entities;
 using StaffTrack.Core.Services;
@@ -13,19 +12,17 @@ namespace StaffTrack.WebAPI.Controllers
     public class StaffController : ControllerBase
     {
         private readonly IStaffService _staffService;
-        private readonly IMapper _mapper;
 
-        public StaffController(IStaffService staffService, IMapper mapper)
+        public StaffController(IStaffService staffService)
         {
             _staffService = staffService;
-            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var staffs = await _staffService.GetAllAsync();
-            return Ok(staffs);
+            return Ok(staffs.Reverse());
         }
 
         [HttpGet("{id}")]

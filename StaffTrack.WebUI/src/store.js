@@ -40,7 +40,7 @@ export const store = new Vuex.Store({
             if (token) {
                 commit("setToken", token);
                 dispatch("setAdminCredentials");
-                router.push("/");
+                router.push("/users");
 
             } else {
                 router.push("/login");
@@ -55,8 +55,9 @@ export const store = new Vuex.Store({
                 .then((response) => {
                     if (response.status === 200) {
                         commit("setToken", response.data.id);
+                        this.admin = response.data;
                         localStorage.setItem("token", response.data.id);
-                        router.push("/");
+                        router.push("/users");
                     }
                 });
         },

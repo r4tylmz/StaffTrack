@@ -11,10 +11,14 @@ namespace StaffTrack.Data.UnitOfWorks
         private StaffRepository _staffRepository;
         private UserRepository _userRepository;
         private StaffActivityRepository _staffActivityRepository;
+        private ConstantRepository _constantRepository;
+        
+        
         public IStaffRepository StaffRepository => _staffRepository ?? new StaffRepository(_context);
         public IUserRepository UserRepository => _userRepository ?? new UserRepository(_context);
         public IStaffActivityRepository StaffActivityRepository =>
             _staffActivityRepository ?? new StaffActivityRepository(_context);
+        public IConstantRepository ConstantRepository => _constantRepository ?? new ConstantRepository(_context);
         
         public UnitOfWork(AppDbContext context)
         {

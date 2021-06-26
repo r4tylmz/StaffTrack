@@ -1,10 +1,11 @@
 <template>
-  <div>
-    <v-row class="ma-auto">
+  <v-container fluid>
+  <div class="ma-10">
+    <v-row>
       <v-col md="12" lg="6">
         <v-card elevation="9" outlined height="100%">
           <v-card-title class="d-flex justify-center"
-            >PERSONEL BILGILERI</v-card-title
+            >Personel Bilgileri</v-card-title
           >
           <v-card>
             <v-card-title>
@@ -39,7 +40,7 @@
                         v-bind="attrs"
                         v-on="on"
                       >
-                        PERSONEL EKLE
+                        Personel Ekle
                       </v-btn>
                     </template>
                     <v-card>
@@ -129,7 +130,7 @@
         <v-card elevation="9" outlined height="100%">
           <v-card>
             <v-card-title class="d-flex justify-center"
-              >PERSONELİN GİRİŞ ÇIKIŞLARI</v-card-title
+              >Personel Giriş Çıkışları</v-card-title
             >
             <v-card-title>
               <v-text-field
@@ -145,7 +146,7 @@
               class="mx-3"
               height="365"
               outlined
-              :items-per-page="5"
+              :items-per-page="6"
               fixed-header
               :headers="activityHeaders"
               :items="staffActivities"
@@ -157,6 +158,7 @@
       </v-col>
     </v-row>
   </div>
+  </v-container>
 </template>
 
 <script>
@@ -167,18 +169,18 @@ export default {
       searchStaff: "",
       staffHeaders: [
         { text: "ID", value: "id", align: "start", filterable: true },
-        { text: "AD", value: "name" },
-        { text: "SOYAD", value: "lastName" },
+        { text: "AD", value: "name" , filterable: true},
+        { text: "SOYAD", value: "lastName" , filterable: true},
         { text: "TELEFON NO", value: "phoneNumber" },
         { text: "ISLEM", value: "actions" },
       ],
       staffs: [],
       searchActivities: "",
       activityHeaders: [
-        { text: "PERSONEL ID", value: "staffId", align: "start", filterable: true,},
+        { text: "PERSONEL ID", value: "staffId", align: "start", filterable: true},
         { text: "ODA ID", value: "roomId" },
-        { text: "AD", value: "name" },
-        { text: "SOYAD", value: "lastName" },
+        { text: "AD", value: "name" , filterable: true},
+        { text: "SOYAD", value: "lastName" , filterable: true},
         { text: "GİRİŞ", value: "entryTime" },
         { text: "ÇIKIŞ", value: "exitTime" },
       ],

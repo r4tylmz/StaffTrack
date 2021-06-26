@@ -42,6 +42,7 @@ namespace StaffTrack.WebAPI
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IStaffService, StaffService>();
             services.AddScoped<IStaffActivityService, StaffActivityService>();
+            services.AddScoped<IConstantService, ConstantService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<AppDbContext>(options => 
                 options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"],o=> 

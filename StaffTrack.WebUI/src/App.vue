@@ -1,11 +1,11 @@
 <template>
-  <v-app>
+  <v-app >
     <div>
       <v-app-bar v-if="isAuthenticated" color="deep-purple accent-4" dense dark class="mb-4">
         <v-toolbar-title class="mr-3">Staff Track</v-toolbar-title>
-        <v-btn text to="/"> Anasayfa</v-btn>
         <v-btn text to="/users"> Personeller</v-btn>
         <v-btn text to="/admins"> Yöneticiler</v-btn>
+        <v-btn text to="/config"> Ayarlar</v-btn>
         <v-spacer></v-spacer>
         <v-toolbar-title class="mr-3" v-if="isAuthenticated">{{ getAdminCredentials.name +' '+ getAdminCredentials.lastName }}</v-toolbar-title>
         <v-btn v-if="isAuthenticated" text @click="logout"> Çıkış</v-btn>

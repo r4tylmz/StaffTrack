@@ -11,6 +11,8 @@ namespace StaffTrack.WebAPI.Mapping
         {
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
+            CreateMap<Constant, ConstantDto>();
+            CreateMap<ConstantDto, Constant>();
         }
     }
 }

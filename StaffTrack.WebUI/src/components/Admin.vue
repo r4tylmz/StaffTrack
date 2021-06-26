@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <v-container fluid>
-      <v-main class="ma-10">
+      <div class="ma-10">
         <v-card elevation="9" outlined height="100%">
           <v-card-title class="d-flex justify-center"
-          >YÖNETİCİ BİLGİLERİ
+          >Yönetici Bilgileri
           </v-card-title
           >
           <v-card>
@@ -126,7 +126,7 @@
             </v-data-table>
           </v-card>
         </v-card>
-      </v-main>
+      </div>
     </v-container>
   </v-app>
 </template>
