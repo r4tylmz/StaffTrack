@@ -24,7 +24,13 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
-        setAdminCredentials(state, admin) {
+        setAdminCredentials(state, data) {
+            const admin = {
+                id: data.id,
+                name: data.name,
+                lastName: data.lastName,
+                email: data.email
+            }
             state.admin = admin;
         },
         setToken(state, token) {
@@ -55,7 +61,6 @@ export const store = new Vuex.Store({
                 .then((response) => {
                     if (response.status === 200) {
                         commit("setToken", response.data.id);
-                        this.admin = response.data;
                         localStorage.setItem("token", response.data.id);
                         router.push("/users");
                     }

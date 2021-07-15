@@ -46,7 +46,13 @@ namespace StaffTrack.WebAPI.Controllers
         {
             var constant = _constantService.GetByIdAsync(1).Result;
             var activities = _staffActivityService.GetAllActivitiesById(id);
-            var wage = constant.HourlyWage * Helper.CalculateTotalMinutes(activities);
+            WorkingTime workingTime = new(_constantService);
+            var workingDatesById = activities
+                .Where(x => 
+                    x.EntryTime.TimeOfDay >= workingTime.StartTime &&
+                    x.EntryTime.TimeOfDay <= workingTime.EndTime &&
+                    x.ExitTime.TimeOfDay <= workingTime.EndTime);
+            var wage = constant.HourlyWage * Helper.CalculateTotalMinutes(workingDatesById);
             return Ok(wage);
         }
     }
